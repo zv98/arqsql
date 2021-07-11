@@ -60,10 +60,11 @@ def inicio():
             datos = email + " " + password
             aux = llenado(len(datos+'login'))
             mensaje = aux + 'login' + datos
-
+            print(mensaje)
             socket.sendall(bytes(mensaje,'utf-8'))
             print("ok")
             recibido=socket.recv(4096)
+            print("lo recibido:")
             print(recibido[12:].decode())
             recibido = recibido[12:].decode()
             if recibido == "no_existe_usuario":
