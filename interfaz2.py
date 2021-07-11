@@ -72,12 +72,12 @@ def inicio():
             #if servicio == 'login':
             print("lo recibido:")
             print(recibido[12:].decode())
-                recibido = recibido[12:].decode()
-                if recibido == "no_existe_usuario":
-                        print("No se pudo acceder")
-                        inicio()
-                else:
-                    return email
+            recibido = recibido[12:].decode()
+            if recibido == "no_existe_usuario":
+                    print("No se pudo acceder")
+                    inicio()
+            else:
+                return email
 
 
         if(opcion == '2'):
