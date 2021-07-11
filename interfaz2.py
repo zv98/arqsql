@@ -48,7 +48,7 @@ def inicio():
         if(opcion == '1'):
             print("Ha seleccionado la opcion de inicio de sesión\n")
             #mandar a codigo maca
-            #socket.sendall(bytes('00010getsvlogin','utf-8'))
+            socket.sendall(bytes('00010getsvlogin','utf-8'))
 
             #ingreso de dato
 
@@ -81,7 +81,7 @@ def inicio():
 
 
         if(opcion == '2'):
-            #socket.sendall(bytes('00010getsvagusr','utf-8'))
+            socket.sendall(bytes('00010getsvagusr','utf-8'))
             print("Para crear su cuenta de usuario, ingrese sus datos a continuación.")
             nombre = input("Nombre: ")
             apellido = input("Apellido: ")
