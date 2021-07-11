@@ -48,7 +48,7 @@ def inicio():
         if(opcion == '1'):
             print("Ha seleccionado la opcion de inicio de sesión\n")
             #mandar a codigo maca
-            #socket.sendall(bytes('00010getsvlogin','utf-8'))
+            #socket.sendall(('00010getsvlogin').encode())
 
             #ingreso de dato
 
@@ -67,6 +67,7 @@ def inicio():
             #recibido=socket.recv(4096)
             servicio, menj = escuchar(socket)
             #recibido = menj[2:]
+            print("hey")
             print(servicio)
             print(menj)
             #if servicio == 'login':
