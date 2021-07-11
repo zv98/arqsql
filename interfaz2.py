@@ -27,7 +27,7 @@ def limpiar(var):
 
 
 #-------------------------interfaz--------------------------------------#
-def inicio():
+def inicio(socket):
     while True:
 
 
@@ -361,5 +361,5 @@ def servicios(email): #le pasa el mail
 
     print("ha cerrado terminal")
 
-email = inicio()
+email = inicio(socket)
 servicios(email)
