@@ -61,7 +61,7 @@ def inicio():
             aux = llenado(len(datos+'login'))
             mensaje = aux + 'login' + datos
             print(mensaje)
-            socket.sendall((mensaje,'utf-8').encode())
+            socket.sendall((mensaje).encode())
             print("ok")
             #recibido=socket.recv(4096)
             #recibido=socket.recv(4096)

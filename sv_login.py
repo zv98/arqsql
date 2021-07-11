@@ -46,11 +46,11 @@ def login(datos,socket):
             print("Ha ingresado con éxito a su cuenta")
             respuesta2='login'+mail+passw
             temp=llenado(len(respuesta2))
-            socket.sendall((temp+respuesta2,'utf-8').encode())
+            socket.sendall((temp+respuesta2).encode())
         else:
             respuesta2 = "login" + "no_existe_usuario"
             temp=llenado(len(respuesta2))
-            socket.sendall((temp+respuesta2,'utf-8').encode())
+            socket.sendall((temp+respuesta2).encode())
 #else:
 #    respuesta2 = "servicio incorrecto"
 #    temp=llenado(len(respuesta2))
