@@ -12,7 +12,7 @@ socket.connect(server_address)
 
 #def recibir(sock, addr):
 print("Ingresando a la cuenta de usuario")
-while True:
+while socket.recv(4096):
     datos = socket.recv(4096)
     if datos.decode('utf-8').find('login'):
         datos = datos[10:]
@@ -43,12 +43,10 @@ while True:
                 respuesta2='login'+mail+passw
                 temp=llenado(len(respuesta2))
                 socket.sendall(bytes(temp+respuesta2,'utf-8'))
-                break
             else:
                 respuesta2 = "login" + "no_existe_usuario"
                 temp=llenado(len(respuesta2))
                 socket.sendall(bytes(temp+respuesta2,'utf-8'))
-                break
     else:
         respuesta2 = "servicio incorrecto"
         temp=llenado(len(respuesta2))
