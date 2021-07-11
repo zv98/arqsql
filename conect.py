@@ -12,14 +12,14 @@ def conexion():
         cur = conec.cursor()
     except:
         print("Error de conexión con base de datos")
-    
+
 def consultar(sqlquery):
     cur.execute(sqlquery)
     return cur.fetchall()
 
 def modificar(sqlquery):
-    cur.execute(sqlquery) 
-    conec.commit()  
+    cur.execute(sqlquery)
+    conec.commit()
 
 def cerrar():
     try:
@@ -27,7 +27,7 @@ def cerrar():
         conec.close()
         print("Conexión con base de datos cerrada")
     except:
-        print("Error al cerrar conexión")    
+        print("Error al cerrar conexión")
 
 def llenado(largo):
     aux = str(largo)
@@ -35,5 +35,22 @@ def llenado(largo):
         aux = '0' + aux
     print(aux)
     return aux
+def escuchar(sock):
+    cant_r = 0
+    tamaño = None
+    menj = ""
+    while True:
+        data = sock.recv(4096)
+        if cant_r = 0:
+            tamaño = int(data[:5].decode())
+            nombre = data[5:10].decode()
+            menj = menj + data[10:].decode()
+            cant_r += len(data)-5
+        else:
+            menj = menj+data.decode()
+            cant_r += len(data)
+        if cant_r >= tamaño:
+            break
+    return nombre, menj
 
 conexion()

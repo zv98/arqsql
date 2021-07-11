@@ -63,16 +63,19 @@ def inicio():
             print(mensaje)
             socket.sendall(bytes(mensaje,'utf-8'))
             print("ok")
-            recibido=socket.recv(4096)
-            recibido=socket.recv(4096)
-            print("lo recibido:")
-            print(recibido[12:].decode())
-            recibido = recibido[12:].decode()
-            if recibido == "no_existe_usuario":
-                    print("No se pudo acceder")
-                    inicio()
-            else:
-                return email
+            #recibido=socket.recv(4096)
+            #recibido=socket.recv(4096)
+            servicio, menj = escuchar(socket)
+            recibido = menj[2:]
+            if servicio == 'login':
+            #print("lo recibido:")
+            #print(recibido[12:].decode())
+                recibido = recibido[12:].decode()
+                if recibido == "no_existe_usuario":
+                        print("No se pudo acceder")
+                        inicio()
+                else:
+                    return email
 
 
         if(opcion == '2'):
