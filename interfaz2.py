@@ -1,4 +1,4 @@
-import socket 
+import socket
 import bcrypt
 import time
 import datetime
@@ -22,16 +22,16 @@ def limpiar(var):
     var = var.replace(",","")
     return var
 
-        
-       
-        
-       
+
+
+
+
 #-------------------------interfaz--------------------------------------#
 
 while True:
 
 
-    opcion = input("""Que servicio desea: 
+    opcion = input("""Que servicio desea:
 	1.- Login
 	2.- Register
 
@@ -44,28 +44,25 @@ while True:
         socket.sendall(bytes('quit','utf-8'))
         time.sleep(5)
         break
-    
+
     if(opcion == '1'):
         print("Ha seleccionado la opcion de inicio de sesión\n")
         #mandar a codigo maca
-        socket.sendall(bytes('00010getsvlogin','utf-8'))
-        
+        #socket.sendall(bytes('00010getsvlogin','utf-8'))
+
         #ingreso de dato
-        
+
         email = input("Ingrese su email \n")
         password = input("Ingrese su contraseña\n")
 
 
         #enviar mensaje
-        datos = email + " " + password 
+        datos = email + " " + password
         aux = llenado(len(datos+'login'))
         mensaje = aux + 'login' + datos
-        
+
         socket.sendall(bytes(mensaje,'utf-8'))
-        
-        print("val")
-        
-        print("aka")
+        print("ok")
         recibido=socket.recv(4096)
         print(recibido[12:].decode())
         recibido = recibido[12:].decode()
@@ -73,9 +70,9 @@ while True:
                 print("No se pudo acceder")
                 continue
         else:
-                
+
                 break
-        
+
 
     if(opcion == '2'):
         socket.sendall(bytes('00010getsvagusr','utf-8'))
@@ -96,18 +93,18 @@ while True:
         temp = llenado(len(datos+'agusr'))
         mensaje = temp + 'agusr' + datos
         socket.sendall(bytes(mensaje,'utf-8'))
-        
+
         recibido = socket.recv(4096)
         print(recibido[10:])
-        
-        
+
+
 while True:
-    opcion = input("""Que servicio desea: 
+    opcion = input("""Que servicio desea:
 	    1.- Agregar mascota
 	    2.- Editar mascota
             3.- Eliminar mascota
             4.- Ver mascotas
-            5.- Editar usuario 
+            5.- Editar usuario
             6.- Eliminar usuario
             0.- salir
 
@@ -130,18 +127,18 @@ while True:
         consulta0= f"SELECT idusuario FROM usuario WHERE email='{email1}';"
         idusuario1 = consultar(consulta0)
         idusuario1 = limpiar(idusuario1)
-                
+
 
                 #RELACION USUARIO PERRO
         consulta1= f"SELECT idmascota FROM usuariomascota where idusuario = '{idusuario1}';"
         idmascota1 = consultar(consulta1)
-                
-                
+
+
                 #PERROS DISPONIBLES
         print("Sus perros ingresados: ")
         for gg in idmascota1:
             gg = limpiar(gg)
-                        
+
             a = consultar(f"SELECT nombre, edad, raza, descripcion, idmascota FROM mascota where idmascota = '{gg}';")
             print(a)
 
@@ -159,12 +156,12 @@ while True:
         socket.sendall(bytes(mensaje,'utf-8'))
                 #print(mensaje)
 
-        
+
         recibido = socket.recv(4096)
         print(recibido[10:])
         print("fin cliente")
-        
-    
+
+
     if opcion=="2":
         socket.sendall(bytes('00010getsveditd','utf-8'))
         email1 = email
@@ -184,9 +181,9 @@ while True:
                 #PERROS DISPONIBLES
         print("Sus perros ingresados: ")
         for gg in idmascota1:
-            
+
             gg = limpiar(gg)
-                        
+
             a = consultar(f"SELECT nombre, edad, raza, descripcion, idmascota FROM mascota where idmascota = '{gg}';")
             print(a)
 
@@ -205,14 +202,14 @@ while True:
         temp = llenado(len(datos+'editd'))
         mensaje = temp + 'editd' + datos
         socket.sendall(bytes(mensaje,'utf-8'))
-        
+
         recibido = socket.recv(4096)
         print(recibido[10:])
         print("fin cliente")
-           
 
 
-        
+
+
     if opcion=="3":
         socket.sendall(bytes('00010getsvelimd','utf-8'))
         email1 = email
@@ -233,7 +230,7 @@ while True:
         print("Sus perros ingresados: ")
         for gg in idmascota1:
                 gg = limpiar(gg)
-                        
+
                 a = consultar(f"SELECT nombre, edad, raza, descripcion, idmascota FROM mascota where idmascota = '{gg}';")
                 print(a)
 
@@ -246,12 +243,12 @@ while True:
         temp = llenado(len(datos+'elimd'))
         mensaje = temp + 'elimd' + datos
         socket.sendall(bytes(mensaje,'utf-8'))
-        
+
         recibido = socket.recv(4096)
         print(recibido[10:])
 
-            
-        
+
+
     if opcion== "4":
         socket.sendall(bytes('00010getsvviewd','utf-8'))
         consulta = f"SELECT mascota.nombre, mascota.edad, mascota.raza, mascota.descripcion, usuario.nombre, usuario.apellido, usuario.contacto, usuario.email, usuario.region FROM mascota, usuario, usuariomascota WHERE mascota.idmascota = usuariomascota.idmascota AND usuario.idusuario = usuariomascota.idusuario;"
@@ -274,10 +271,10 @@ while True:
         socket.sendall(bytes(mensaje,'utf-8'))
         recibido = socket.recv(4096)
         print(recibido[10:])
-      
 
 
-            
+
+
     if opcion== "5":
         socket.sendall(bytes('00010getsveditu','utf-8'))
         email1 = email # aqui pasas el atributo de mail
@@ -347,7 +344,7 @@ while True:
         print(recibido[10:])
 
 
-        
+
     if(opcion == "0"):
         socket.sendall(bytes('quit','utf-8'))
         time.sleep(5)
