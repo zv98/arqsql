@@ -66,7 +66,7 @@ if __name__ == "__main__":
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server_address = ('localhost', 5000)
         print('connecting to {} port {}'.format(*server_address))
-        socket.connect(server_address)
+        sock.connect(server_address)
     except:
         print("Error de conexion")
     iniciar(sock,"login","sinit")
