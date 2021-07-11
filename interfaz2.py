@@ -21,7 +21,19 @@ def limpiar(var):
     var = var.replace(")","")
     var = var.replace(",","")
     return var
+def enviarDatos(sock,contenido, servicio):
+    # Generacion de la transaccion
+    # validacion de argumentos
+    if len(servicio) < 5 or len(contenido) < 1:
+        print("Error: los datos no se han ingresado correctamente")
+        return
 
+    transaccionLen = len(contenido) + len(servicio)
+    largoText = str((transaccionLen)).zfill(5) # zfill rellena con ceros a la izquierda hasta llegar a 5
+
+    transaccion = largoText + servicio + contenido
+    # print("Servicio: transaccion-",transaccion)
+    sock.sendall(transaccion.encode())
 
 
 
@@ -61,7 +73,8 @@ def inicio(socket):
             aux = llenado(len(datos+'login'))
             mensaje = aux + 'login' + datos
             print(mensaje)
-            socket.sendall((mensaje).encode())
+            enviarDatos(socket,datos,"login")
+            #socket.sendall((mensaje).encode())
             print("ok")
             #recibido=socket.recv(4096)
             #recibido=socket.recv(4096)
