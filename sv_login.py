@@ -8,18 +8,20 @@ import hashlib
 
 def iniciar(sock,cont,serv):
     largo = len(cont+serv)
-    temp = llenado(largo)
+    temp = str((largo).zfill(5))
     respuesta = temp + serv + cont
     print(respuesta)
     sock.sendall(respuesta.encode())
 #def recibir(sock, addr):
 print("Ingresando a la cuenta de usuario")
 #while socket.recv(4096):
-def login(datos,socket):
+def login(datos):
     #datos = socket.recv(4096)
     #print(datos)
     #if datos.decode('utf-8').find('login'):
-    datos = datos[10:]
+    #datos = datos[10:]
+    print("login")
+    print(datos)
     target = datos.decode()
     data = target.split()
     email = data[0]
@@ -46,11 +48,13 @@ def login(datos,socket):
             print("Ha ingresado con éxito a su cuenta")
             respuesta2='login'+mail+passw
             temp=llenado(len(respuesta2))
-            socket.sendall((temp+respuesta2).encode())
+            iniciar(sock,"iniciando sesion","login")
+            #socket.sendall((temp+respuesta2).encode())
         else:
             respuesta2 = "login" + "no_existe_usuario"
             temp=llenado(len(respuesta2))
-            socket.sendall((temp+respuesta2).encode())
+            iniciar(sock,"datos incorretos","login")
+            #socket.sendall((temp+respuesta2).encode())
 #else:
 #    respuesta2 = "servicio incorrecto"
 #    temp=llenado(len(respuesta2))

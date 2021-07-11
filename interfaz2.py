@@ -26,13 +26,23 @@ def enviarDatos(sock,contenido, servicio):
         return
 
     transaccionLen = len(contenido) + len(servicio)
-    largoText = str((transaccionLen)).zfill(5) # zfill rellena con ceros a la izquierda hasta llegar a 5
-
+    largoText = str((transaccionLen)).zfill(5)
     transaccion = largoText + servicio + contenido
-    # print("Servicio: transaccion-",transaccion)
     sock.sendall(transaccion.encode())
 
-
+def escuchar(sock):
+    cantidadRecibida = 0
+    while True:
+        data = sock.recv(4096)
+        cantidadRecibida += len(data)
+        # print("data ricibida:",cantidadRecibida)
+        # print('received {!r}'.format(data))
+        transLen = int(data[:5].decode())
+        nombreServicio = data[5:10].decode()
+        msgTransaccion= data[10:5+transLen].decode()
+        # print("tamaño de transaccion:",tamañoTransaccion)
+        # print("msg:",msgTransaccion)
+        return nombreServicio, msgTransaccion
 
 
 #-------------------------interfaz--------------------------------------#
