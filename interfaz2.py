@@ -98,7 +98,7 @@ def inicio():
             print(recibido[10:])
             inicio()
 
-def servicios(m): #le pasa el mail
+def servicios(email): #le pasa el mail
     while True:
         opcion = input("""Que servicio desea:
     	    1.- Agregar mascota
