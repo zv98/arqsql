@@ -32,8 +32,8 @@ def inicio():
 
 
         opcion = input("""Que servicio desea:
-    	1.- Login
-    	2.- Register
+        	1.- Login
+        	2.- Register
 
             0.- salir
 
