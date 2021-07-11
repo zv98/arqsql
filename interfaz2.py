@@ -61,22 +61,23 @@ def inicio():
             aux = llenado(len(datos+'login'))
             mensaje = aux + 'login' + datos
             print(mensaje)
-            socket.sendall(bytes(mensaje,'utf-8'))
+            socket.sendall((mensaje,'utf-8').encode())
             print("ok")
-            recibido=socket.recv(4096)
             #recibido=socket.recv(4096)
-            #servicio, menj = escuchar(socket)
+            #recibido=socket.recv(4096)
+            servicio, menj = escuchar(socket)
             #recibido = menj[2:]
-            #print(servicio)
-            #print(recibido)
+            print(servicio)
+            print(recibido)
             #if servicio == 'login':
-            print("lo recibido:")
-            print(recibido[12:].decode())
-            recibido = recibido[12:].decode()
+            #print("lo recibido:")
+            #print(recibido[12:].decode())
+            #recibido = recibido[12:].decode()
             if recibido == "no_existe_usuario":
                     print("No se pudo acceder")
                     inicio()
             else:
+                print("sesion iniciada en ",email)
                 return email
 
 
