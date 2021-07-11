@@ -67,7 +67,7 @@ def inicio():
         if(opcion == '1'):
             print("Ha seleccionado la opcion de inicio de sesión\n")
             #mandar a codigo maca
-            socket.sendall(('00010getsvlogin').encode())
+            #socket.sendall(('00010getsvlogin').encode())
 
             #ingreso de dato
 
