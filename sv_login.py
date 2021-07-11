@@ -81,9 +81,9 @@ if __name__ == "__main__":
         print("no se pudo iniciar el servicio")
     while True:
         print("escuchando")
-        s, m = escuchar(sock)
-        print(s,m)
+        ser, msj = escuchar(sock)
+        print(ser,msj)
         if s == 'login':
-            login(m,sock)
+            login(msj,sock)
     print("cerrando")
     sock.close()
