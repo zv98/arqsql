@@ -77,7 +77,7 @@ if __name__ == "__main__":
         print("no se pudo iniciar el servicio")
     while True:
         print("escuchando")
-        s, m == escuchar(sock)
+        s, m = escuchar(sock)
         print(s,m)
         if s == 'login':
             login(m,sock)
