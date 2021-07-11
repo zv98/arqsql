@@ -351,3 +351,6 @@ def servicios():
             break
 
     print("ha cerrado terminal")
+
+inicio()
+servicios()
