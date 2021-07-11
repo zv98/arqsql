@@ -75,7 +75,7 @@ while True:
 
 
     if(opcion == '2'):
-        socket.sendall(bytes('00010getsvagusr','utf-8'))
+        #socket.sendall(bytes('00010getsvagusr','utf-8'))
         print("Para crear su cuenta de usuario, ingrese sus datos a continuación.")
         nombre = input("Nombre: ")
         apellido = input("Apellido: ")
@@ -96,6 +96,7 @@ while True:
 
         recibido = socket.recv(4096)
         print(recibido[10:])
+        break
 
 
 while True:
