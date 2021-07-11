@@ -68,7 +68,7 @@ while True:
         recibido = recibido[12:].decode()
         if recibido == "no_existe_usuario":
                 print("No se pudo acceder")
-                continue
+                exit()
         else:
 
                 break
@@ -85,7 +85,7 @@ while True:
         region = input("Región de residencia: ")
         email = input("E-mail: ")
         #--------------HASH----------------
-        pswAux=hashlib.md5(psw)
+        pswAux=hashlib.md5(psw.encode())
         pswAux2=pswAux.digest()
         #----------------------------------
         #envio de datos
