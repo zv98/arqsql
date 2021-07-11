@@ -67,6 +67,8 @@ def inicio():
             #recibido=socket.recv(4096)
             servicio, menj = escuchar(socket)
             recibido = menj[2:]
+            print(servicio)
+            print(recibido)
             if servicio == 'login':
             #print("lo recibido:")
             #print(recibido[12:].decode())
