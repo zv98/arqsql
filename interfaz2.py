@@ -52,7 +52,7 @@ def inicio():
 
             #ingreso de dato
 
-            global email = input("Ingrese su email \n")
+            email = input("Ingrese su email \n")
             password = input("Ingrese su contraseña\n")
 
 
@@ -70,7 +70,7 @@ def inicio():
                     print("No se pudo acceder")
                     inicio()
             else:
-                return
+                return email
 
 
         if(opcion == '2'):
@@ -92,7 +92,7 @@ def inicio():
             temp = llenado(len(datos+'agusr'))
             mensaje = temp + 'agusr' + datos
             socket.sendall(bytes(mensaje,'utf-8'))
-
+            print("hey")
             recibido = socket.recv(4096)
             print(recibido[10:])
             inicio()
@@ -352,5 +352,5 @@ def servicios():
 
     print("ha cerrado terminal")
 
-inicio()
+email = inicio()
 servicios()
