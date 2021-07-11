@@ -68,12 +68,12 @@ def inicio():
             servicio, menj = escuchar(socket)
             #recibido = menj[2:]
             print(servicio)
-            print(recibido)
+            print(menj)
             #if servicio == 'login':
             #print("lo recibido:")
             #print(recibido[12:].decode())
             #recibido = recibido[12:].decode()
-            if recibido == "no_existe_usuario":
+            if menj == "no_existe_usuario":
                     print("No se pudo acceder")
                     inicio()
             else:
