@@ -15,7 +15,7 @@ def iniciar(sock,cont,serv):
 #def recibir(sock, addr):
 print("Ingresando a la cuenta de usuario")
 #while socket.recv(4096):
-def login(datos,socket)
+def login(datos,socket):
     #datos = socket.recv(4096)
     #print(datos)
     #if datos.decode('utf-8').find('login'):
