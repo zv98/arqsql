@@ -7,10 +7,7 @@ import hashlib
 from conect import *
 import threading
 global email
-socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('localhost', 5000)
-print('connecting to {} port {}'.format(*server_address))
-socket.connect(server_address)
+
 
 #socket.sendall(bytes('00005getsv','utf-8'))
 def limpiar(var):
@@ -39,7 +36,7 @@ def enviarDatos(sock,contenido, servicio):
 
 
 #-------------------------interfaz--------------------------------------#
-def inicio(socket):
+def inicio():
     while True:
 
 
@@ -373,6 +370,15 @@ def servicios(email): #le pasa el mail
             break
 
     print("ha cerrado terminal")
+if __name__ == "__main__":
+    try:
+        socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_address = ('localhost', 5000)
+        print('connecting to {} port {}'.format(*server_address))
+        socket.connect(server_address)
+    except:
+        print("error de conexion")
+        quit()
 
-email = inicio(socket)
+email = inicio()
 servicios(email)
