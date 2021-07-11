@@ -64,8 +64,9 @@ def inicio():
             socket.sendall(bytes(mensaje,'utf-8'))
             print("ok")
             recibido=socket.recv(4096)
+            recibido=socket.recv(4096)
             print("lo recibido:")
-            #print(recibido[12:].decode())
+            print(recibido[12:].decode())
             recibido = recibido[12:].decode()
             if recibido == "no_existe_usuario":
                     print("No se pudo acceder")
