@@ -8,7 +8,7 @@ import hashlib
 
 def iniciar(sock,cont,serv):
     largo = len(cont+serv)
-    temp = str((largo).zfill(5))
+    temp = str((largo)).zfill(5)
     respuesta = temp + serv + cont
     print(respuesta)
     sock.sendall(respuesta.encode())
