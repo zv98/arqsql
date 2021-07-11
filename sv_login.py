@@ -43,10 +43,12 @@ while True:
                 respuesta2='login'+mail+passw
                 temp=llenado(len(respuesta2))
                 socket.sendall(bytes(temp+respuesta2,'utf-8'))
+                break
             else:
                 respuesta2 = "login" + "no_existe_usuario"
                 temp=llenado(len(respuesta2))
                 socket.sendall(bytes(temp+respuesta2,'utf-8'))
+                break
     else:
         respuesta2 = "servicio incorrecto"
         temp=llenado(len(respuesta2))
