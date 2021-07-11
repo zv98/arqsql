@@ -12,7 +12,7 @@ server_address = ('localhost', 5000)
 print('connecting to {} port {}'.format(*server_address))
 socket.connect(server_address)
 
-socket.sendall(bytes('00005getsv','utf-8'))
+#socket.sendall(bytes('00005getsv','utf-8'))
 def limpiar(var):
     var = str(var)
     var = var.replace("[","")
