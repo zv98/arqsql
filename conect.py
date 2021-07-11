@@ -41,7 +41,7 @@ def escuchar(sock):
     menj = ""
     while True:
         data = sock.recv(4096)
-        if cant_r = 0:
+        if cant_r == 0:
             tamaño = int(data[:5].decode())
             nombre = data[5:10].decode()
             menj = menj + data[10:].decode()
